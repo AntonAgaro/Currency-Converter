@@ -1,0 +1,39 @@
+.courses-header {
+  margin-top: 0.625rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.currencies {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.currency-table {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: left;
+  font-size: calc(10px + 6 * ((100vw - 320px) / 1043));
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+td, th {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e8e9eb;
+}
+
+tr {
+  cursor: pointer;
+}
+
+.with-hover {
+  &:hover {
+    background-color: #e8e9eb;
+  }
+}
+

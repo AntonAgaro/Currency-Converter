@@ -1,0 +1,24 @@
+.CurrencyList {
+  position: absolute;
+  padding: 10px;
+  top: 47%;
+  left: 0;
+  width: 100%;
+  background: #ffff;
+  color: black;
+  border: 1px solid #cdcdcd;
+  border-radius: 4px;
+  display: none;
+  @media(max-width: 460px) {
+    top: 20%;
+  }
+  &--active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 50px;
+    row-gap: 10px;
+    @media(max-width: 460px) {
+      column-gap: 25px;
+    }
+  }
+}

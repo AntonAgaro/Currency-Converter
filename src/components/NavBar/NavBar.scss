@@ -1,0 +1,32 @@
+.NavBar {
+  min-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5%;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-item {
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: black;
+    &--active {
+      color: blue;
+      text-decoration: underline;
+    }
+}

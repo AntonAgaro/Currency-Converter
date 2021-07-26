@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useCallback} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getCurrencyCourses } from './redux/actions/coursesActions';
+import Converter from './components/Converter/Converter';
+import NavBar from "./components/NavBar/NavBar";
+import Courses from './components/Courses/Courses';
+
 
 function App() {
+    const dispatch = useDispatch();
+    const getCourses = useCallback(
+      () => dispatch(getCurrencyCourses()),
+      [dispatch]
+    )
+    getCourses();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar/>
+        <Switch>
+          <Route path="/" exact component={Converter}/>
+          <Route path="/courses" component={Courses}/>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

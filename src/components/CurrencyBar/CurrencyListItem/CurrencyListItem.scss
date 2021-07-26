@@ -1,0 +1,16 @@
+.CurrencyListItem {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.625rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #4895ef;
+    color: #ffffff;
+  }
+  &__CharCode {
+    font-weight: 700;
+  }
+}
