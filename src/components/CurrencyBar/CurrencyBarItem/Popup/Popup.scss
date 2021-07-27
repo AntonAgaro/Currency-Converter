@@ -1,0 +1,16 @@
+.Popup {
+  position: absolute;
+  top: -55%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 5px;
+  max-width: 300px;
+  background-color: #4895ef;
+  color: #ffffff;
+  font-size: 0.625rem;
+  display: none;
+  white-space: nowrap;
+  &--active {
+    display: block;
+  }
+}

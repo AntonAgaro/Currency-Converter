@@ -169,6 +169,7 @@ const Converter = () => {
             </div>
           </div>
         </div>
+        <div className="conventer__data-info">Курс по данным ЦБ РФ </div>
         </div>
       </div>
     </>

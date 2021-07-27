@@ -1,6 +1,7 @@
 const getData = async () => {
   const res =  await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
   const data = await res.json();
+  console.log(data)
   return data.Valute;
 }
 
