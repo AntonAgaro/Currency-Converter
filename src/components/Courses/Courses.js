@@ -1,24 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Courses.scss';
 import { useSelector } from 'react-redux';
 import CurrencyTableItem from './CurrencyTableItem/CurrencyTableItem';
-import CurrencyBar from '../CurrencyBar/CurrencyBar';
 
 const Courses = () => {
   const courses = useSelector((state) => state.coursesReducer);
-  const [currencyBarItems] = useState(['RUR', 'EUR', 'USD', 'GBP']); 
-  const [activeCurrency, setActiveCurrency] = useState(0);
-  
-  const onChooseActive = id => {
-    setActiveCurrency(id);
-  }
+
+  const date = new Date();
 
   return (
     <>
       <div className="container">
         <div className="courses-header">
-          <h3 className="courses-title">Курсы валют к:</h3>
-          <CurrencyBar items={currencyBarItems} active={activeCurrency} onChooseActive={onChooseActive} />
+          <h3 className="courses-title">Курсы иностранных валют к рублю Российской Федерации на {date.toLocaleDateString()}:</h3>
         </div>
         <table className="currency-table">
           <tbody>

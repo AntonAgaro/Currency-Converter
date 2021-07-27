@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Popup from './Popup/Popup';
+import './CurrencyBarItem.scss';
 
 const CurrencyBarItem = props => {
   const {id, text, classes, activate} = props;

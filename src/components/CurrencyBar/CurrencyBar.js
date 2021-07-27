@@ -1,4 +1,5 @@
 import CurrencyBarItem from './CurrencyBarItem/CurrencyBarItem';
+import './CurrencyBar.scss';
 
 const CurrencyBar = props => {
   const {items, active, onChooseActive} = props;

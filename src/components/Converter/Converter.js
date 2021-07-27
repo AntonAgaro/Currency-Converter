@@ -21,6 +21,7 @@ const Converter = () => {
   const [purchasingActive, setPurchasingActive] = useState(0);
   const [availableValue, setAvailableValue] = useState(0);
   const [resultCost, setResultCost] = useState(0);
+  const currentDate = new Date().toLocaleDateString();
   
   const onChooseAvailableActive = id => {
     setAvailableActive(id);
@@ -110,11 +111,15 @@ const Converter = () => {
 
   //Активация блока со всей валютой
   const toggleAvailableList = () => {
-    setActiveAvailableList(!activeAvailableList);
+    if (!activePurchaseList) {
+      setActiveAvailableList(!activeAvailableList);
+    }
   }
 
   const togglePurchasingList = () => {
-    setActivePurchaseList(!activePurchaseList);
+    if (!activeAvailableList) {
+      setActivePurchaseList(!activePurchaseList);
+    }
   }
 
   //Изменение панели с валютой
@@ -136,27 +141,59 @@ const Converter = () => {
     <>
       <div className="container">
         <div className="conventer__wrapper">
-        <CurrencyList active={activeAvailableList} changeCurrencyBarItems={changeCurrencyBarItems} toggleActive={toggleAvailableList}/>
-        <CurrencyList active={activePurchaseList} changeCurrencyBarItems={changePurchasingBarItems} toggleActive={togglePurchasingList}/>
+        <CurrencyList 
+          active={activeAvailableList} 
+          mustNoToBeActive={activePurchaseList}
+          changeCurrencyBarItems={changeCurrencyBarItems} 
+          toggleActive={toggleAvailableList}
+        />
+        <CurrencyList 
+          active={activePurchaseList} 
+          mustNoToBeActive={activeAvailableList}
+          changeCurrencyBarItems={changePurchasingBarItems} 
+          toggleActive={togglePurchasingList}
+        />
         <div className="conventer__header">
           <div className="conventer__header-item">
             <h3 className="conventer__title">У меня есть:</h3>
-            <CurrencyBar items={currencyBarItems} active={availableActive} onChooseActive={onChooseAvailableActive}>
-            <CurrencyListActivater active={activeAvailableList} toggleActive={toggleAvailableList}/>
+            <CurrencyBar 
+              items={currencyBarItems} 
+              active={availableActive} 
+              onChooseActive={onChooseAvailableActive}
+            >
+              <CurrencyListActivater 
+                active={activeAvailableList} 
+                mustNoToBeActive={activePurchaseList} 
+                toggleActive={toggleAvailableList}
+              />
             </CurrencyBar>
           </div>
           <div className="conventer__header-item">
             <h3 className="conventer__title">Хочу приобрести:</h3>
-            <CurrencyBar items={purchasingBarItems} active={purchasingActive} onChooseActive={onChoosePurchasingActive}>
-            <CurrencyListActivater active={activePurchaseList} toggleActive={togglePurchasingList}/>
+            <CurrencyBar 
+              items={purchasingBarItems} 
+              active={purchasingActive} 
+              onChooseActive={onChoosePurchasingActive}
+            >
+              <CurrencyListActivater 
+                active={activePurchaseList} 
+                mustNoToBeActive={activeAvailableList} 
+                toggleActive={togglePurchasingList}
+              />
             </CurrencyBar>
           </div>
         </div>
         <div className="conventer__calc">
           <div className="conventer__calc-item">
-            <Input onChangeInputValue={onChangeInputValue} value={availableValue} onFocusInput={onFocusInput} onBlurInput={onBlurInput}/>
+            <Input 
+              onChangeInputValue={onChangeInputValue} 
+              value={availableValue} 
+              onFocusInput={onFocusInput} 
+              onBlurInput={onBlurInput}
+            />
             <div className="conventer__calc-info">
-              {availableValue === 0 ? null : `1 ${currencyBarItems[availableActive]} = ${availableInfo} ${purchasingBarItems[purchasingActive]}`}
+              {availableValue === 0 ? null : 
+                `1 ${currencyBarItems[availableActive]} = ${availableInfo} ${purchasingBarItems[purchasingActive]}`}
             </div>
           </div>
           <img className="conventer__calc-img"  src={transfer} alt="transfer" />
@@ -165,11 +202,12 @@ const Converter = () => {
               {resultCost === 0 ? '' : splitDigitsOfNumber(resultCost.toFixed(4))}
             </div>
             <div className="conventer__calc-info">
-              {resultCost === 0 ? null : `1 ${purchasingBarItems[purchasingActive]} = ${purchasingInfo} ${currencyBarItems[availableActive]}`}
+              {resultCost === 0 ? null : 
+              `1 ${purchasingBarItems[purchasingActive]} = ${purchasingInfo} ${currencyBarItems[availableActive]}`}
             </div>
           </div>
         </div>
-        <div className="conventer__data-info">Курс по данным ЦБ РФ </div>
+        <div className="conventer__data-info">Курс по данным ЦБ РФ на {currentDate} </div>
         </div>
       </div>
     </>

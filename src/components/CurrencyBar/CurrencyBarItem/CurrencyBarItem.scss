@@ -1,0 +1,26 @@
+.conventer__curr-bar-item {
+  position: relative;
+  width: 70%;
+  padding: 12px 0;
+  border-top: 1px solid #cdcdcd;
+  border-bottom: 1px solid #cdcdcd;
+  border-right: 1px solid #cdcdcd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:first-child {
+    border-radius: 4px 0 0 4px;
+    border-left: 1px solid #cdcdcd;
+  }
+  &:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+  &--active {
+    background-color: #4895ef;
+    color: #ffffff;
+  }
+  @media (max-width: 460px) {
+    width: 30px;
+  }
+}

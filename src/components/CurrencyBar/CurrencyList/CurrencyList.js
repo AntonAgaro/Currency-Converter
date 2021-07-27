@@ -7,7 +7,7 @@ const CurrencyList = props => {
   const currencies = useSelector(state => state.coursesReducer);
 
   const classes = ['CurrencyList'];
-  if (props.active && !document.querySelector('.CurrencyList--active')) {
+  if (props.active && !props.mustNoToBeActive) {
     classes.push('CurrencyList--active')
   }
 
